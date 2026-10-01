@@ -1,0 +1,66 @@
+name: Bug Report
+description: Report a problem or a defect.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Check out [CONTRIBUTING.md](https://github.com/d5hu/utilities/blob/main/CONTRIBUTING.md#bug-reports) for more information.
+  - type: dropdown
+    id: library
+    attributes:
+      label: Library
+      description: Which library is affected?
+      options:
+        - D5HU.Utilities.Tasks
+        - Other / Not sure
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      placeholder: "e.g. 1.2.0"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A short description of the problem or defect.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: A minimal code sample that reproduces the bug.
+      value: |
+        ```csharp
+        Thing thing = new Thing();
+        thing.ThisCausesTroubles();
+        ```
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include exception messages and stack traces if applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: .NET version, OS, and anything else relevant.
+      placeholder: |
+        - Runtime Version:
+        - Operating System:
+        - Architecture:

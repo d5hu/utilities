@@ -1,0 +1,37 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+  
+  <PropertyGroup>
+    <Authors>Bernhard Grauer</Authors>
+    <Company>D5HU.ch</Company>
+    <Product>D5HU Utilities</Product>
+    
+    <PackageProjectUrl>https://github.com/d5hu/utilities</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/d5hu/utilities</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>https://github.com/d5hu/utilities/releases</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageIcon>ICON.png</PackageIcon>
+    
+    <Version>0.0.0-dev</Version>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    
+    <IsAotCompatible>true</IsAotCompatible>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\ICON.png" Pack="true" PackagePath=""/>
+    <None Include="..\..\LICENSE.txt" Pack="true" PackagePath=""/>
+    <None Include="README.md" Pack="true" PackagePath=""/>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
+  </ItemGroup>
+  
+</Project>

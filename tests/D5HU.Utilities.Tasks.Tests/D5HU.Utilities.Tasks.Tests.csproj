@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\D5HU.Utilities.Tasks\D5HU.Utilities.Tasks.csproj" />
+  </ItemGroup>
+  
+</Project>

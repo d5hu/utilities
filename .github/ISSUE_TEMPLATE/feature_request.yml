@@ -1,0 +1,32 @@
+name: Feature Request
+description: Suggest a new feature or an improvement.
+labels: ["feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion! Check out [CONTRIBUTING.md](https://github.com/d5hu/utilities/blob/main/CONTRIBUTING.md#feature-requests) for more information.
+  - type: dropdown
+    id: library
+    attributes:
+      label: Library
+      description: Which library should the feature be part of?
+      options:
+        - D5HU.Utilities.Tasks
+        - Other / Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Describe the purpose and value of the feature.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe the API change you have in mind and provide an example of how it should be used.
+    validations:
+      required: true

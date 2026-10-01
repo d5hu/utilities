@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <PackageId>D5HU.Utilities.Tasks</PackageId>
+    <Title>D5HU Task Utilities</Title>
+    <Description>Asynchronous coordination primitives for .NET.</Description>
+    <PackageTags>async;await;tasks;utilities;synchronization;coordination;reader-writer-lock;async-lock;task-queue;queue</PackageTags>
+  </PropertyGroup>
+  
+</Project>

@@ -1,0 +1,53 @@
+name: Continuous Deployment (NuGet)
+
+on:
+  push:
+    tags:
+      - "tasks/v*.*.*"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: nuget
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - name: Determine version
+        id: version
+        run: echo "value=${GITHUB_REF_NAME#tasks/v}" >> "$GITHUB_OUTPUT"
+
+      - name: Restore
+        run: dotnet restore --locked-mode
+
+      - name: Format
+        run: dotnet format --verify-no-changes --no-restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore -p:Version=${{ steps.version.outputs.value }} -p:ContinuousIntegrationBuild=true
+
+      - name: Test
+        run: dotnet test --configuration Release --no-build --settings .runsettings
+
+      - name: Pack
+        run: dotnet pack --configuration Release --no-build --output artifacts -p:Version=${{ steps.version.outputs.value }} -p:ContinuousIntegrationBuild=true
+
+      - name: Login NuGet
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Push NuGet
+        run: dotnet nuget push "artifacts/*.nupkg" --api-key ${{ steps.nuget-login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

@@ -1,0 +1,13 @@
+# User-specific files
+*.user
+
+# Build results
+**/[Bb]in/*
+**/[Oo]bj/*
+**/[Nn]upkg/*
+
+# Test results
+**/TestResults/*
+
+# Visual Studio specific files
+.vs/
